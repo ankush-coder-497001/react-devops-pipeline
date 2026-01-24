@@ -5,6 +5,9 @@ import { defineConfig } from "eslint/config";
 
 export default defineConfig([
   {
+    ignores: ["scripts/**"]
+  },
+  {
     files: ["**/*.{js,mjs,cjs,jsx}"],
     plugins: {
       react: pluginReact

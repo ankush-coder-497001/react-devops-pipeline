@@ -1,7 +1,7 @@
 const requiredEnvs = ["VITE_API_URL", "VITE_APP_ENV"];
 
 const missing = requiredEnvs.filter(
-  (env) => !import.meta.env[env]
+  (env) => !process.env[env]
 );
 
 if (missing.length > 0) {
