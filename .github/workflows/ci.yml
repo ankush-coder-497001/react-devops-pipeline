@@ -35,4 +35,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: validate environment variables
+        run: npm run check-env
+        env:
+          VITE_API_URL: "https://example.com"
+          VITE_APP_ENV: "ci"
           
