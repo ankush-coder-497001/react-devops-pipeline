@@ -1,16 +1,146 @@
-# React + Vite
+# 🔐 Secure CI Pipeline (No Deployment)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![CI Status](https://github.com/ankush-coder-4971001/react-devops-pipeline/actions/workflows/ci.yml/badge.svg)
 
-Currently, two official plugins are available:
+## 📌 Project Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This project demonstrates a **production‑grade, security‑focused CI pipeline** built using **GitHub Actions**, without any cloud account, VM, or deployment setup.
 
-## React Compiler
+The goal of this project is to show how **code quality, security checks, environment validation, and container safety** can be enforced *before* any deployment step.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+This mirrors real‑world DevOps practices where CI acts as the **first security gate**.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🎯 What This Project Covers
+
+* ✅ Secure CI pipeline design
+* 🔐 Environment variable validation
+* 🧪 Test execution in CI
+* 🧹 Code linting
+* 📦 Dependency vulnerability scanning
+* 🐳 Docker image build & push
+* 🚫 **No CD / No deployment / No notifications**
+
+---
+
+## 🧱 Pipeline Architecture
+
+```
+Developer Push
+      ↓
+GitHub Actions (CI)
+      ↓
+────────────────────────
+✔ Install dependencies
+✔ Lint source code
+✔ Run tests
+✔ Validate environment variables
+✔ Scan dependencies (npm audit)
+✔ Build Docker image
+✔ Push to Docker Hub
+────────────────────────
+      ↓
+Pipeline stops (no deploy)
+```
+
+---
+
+## 🛠️ Tech Stack
+
+* **Node.js 18**
+* **GitHub Actions** (CI)
+* **ESLint** (Linting)
+* **npm audit** (Dependency security)
+* **Docker** (Containerization)
+* **Docker Hub** (Image registry)
+
+---
+
+## 🔐 Environment Variables
+
+Environment variables are validated during CI to prevent misconfigured builds.
+
+Example required variables:
+
+```
+NODE_ENV
+APP_PORT
+```
+
+If any required variable is missing, the pipeline fails immediately.
+
+---
+
+## 🔍 Security Checks Included
+
+### 1️⃣ Linting (Code Quality)
+
+Ensures consistent and clean code using ESLint.
+
+### 2️⃣ Dependency Audit
+
+Uses `npm audit` to detect known vulnerabilities in dependencies.
+
+### 3️⃣ Secret Safety
+
+All sensitive values are stored using **GitHub Secrets** — never hardcoded.
+
+---
+
+## 🚀 CI Workflow Trigger
+
+The pipeline runs automatically on:
+
+* Push to `main`
+* Pull requests targeting `main`
+
+---
+
+## 📁 Repository Structure
+
+```
+.
+├── .github/workflows/
+│   └── ci.yml
+├── src/
+├── Dockerfile
+├── package.json
+├── package-lock.json
+└── README.md
+```
+
+---
+
+## 🧠 Why No Deployment?
+
+This project intentionally **does not include CD** because:
+
+* No cloud account or VM is used
+* Focus is on CI security foundations
+* Matches early‑stage DevOps / junior DevOps responsibilities
+
+Deployment can be added later without changing the CI design.
+
+---
+
+## 🧪 How to Test CI Locally
+
+```bash
+npm install
+npm run lint
+npm test
+npm audit
+```
+
+---
+
+## 📌 Resume‑Ready Description
+
+> Designed and implemented a security‑focused CI pipeline using GitHub Actions with linting, dependency audits, environment validation, and Docker image automation, following industry DevOps best practices.
+
+---
+
+## 📄 License
+
+MIT License
